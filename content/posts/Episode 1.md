@@ -96,7 +96,6 @@ Before the houses go up, you need:
 - access rules
 - safety standards
 - planning permission
-- shared services
 - maintenance responsibilities
 
 That is the foundation that allows homes to be built safely and consistently.
@@ -218,7 +217,7 @@ That looks like a lot.
 
 But really, the question is simple:
 
-> How do we want Azure to behave before everyone starts deploying into it?
+> How do we want Azure to behave before everyone starts deploying into it? Build on rock, not sand, people.
 
 To answer that, you need structure.
 
@@ -260,9 +259,7 @@ Old subscriptions can be isolated while they are being retired.
 
 That is the point of the landing zone structure.
 
-Not to make Azure more complicated.
-
-To make Azure predictable.
+Not to make Azure more complicated. To make outcomes more predictable.
 
 ---
 
@@ -297,7 +294,7 @@ The **platform landing zone** provides shared foundation services like identity,
 
 The **application landing zones** are where business workloads live.
 
-The platform gives teams the roads, rules, security, connectivity, and shared services.
+The platform gives teams the rules, security, connectivity, and shared services.
 
 The application teams build on top of that foundation.
 
@@ -335,17 +332,17 @@ A landing zone is the wider architecture and operating model around that subscri
 
 This is probably the most common mistake.
 
-It feels faster at the beginning, but it usually creates more work later.
+It feels great at the beginning, creating an app, being able to connect to it, but it usually creates more work for later if the fundamentals are skipped.
 
 ### 3. Treating networking as an afterthought
 
-Networking decisions are hard to reverse once workloads depend on them.
+Networking decisions are hard to reverse once workloads depend on them; and people that understand the problems fluently are hard to come by.
 
 Think carefully about connectivity, DNS, private access, hybrid routing, and inspection requirements early.
 
 ### 4. Giving people access directly instead of using a proper model
 
-Direct user permissions may feel simple, but they become difficult to manage.
+Like above direct user permissions may feel simple, but they become difficult to manage.
 
 Use groups, roles, least privilege, and clear ownership boundaries.
 
@@ -444,6 +441,6 @@ Only official Microsoft documentation was used for this article:
 
 In the next post, I’ll break down how the **Cloud Adoption Framework**, **Azure landing zones**, and the **Azure Well-Architected Framework** fit together.
 
-They are often mentioned in the same conversations, but they solve different parts of the Azure architecture puzzle.
+They are often mentioned in the same conversations, but they solve different parts of the Azure architecture puzzle. 
 
-Understanding that relationship makes the rest of Azure architecture much easier to reason about.
+It'll also be ideal for me to brush up on it.
