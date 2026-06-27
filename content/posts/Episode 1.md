@@ -20,7 +20,7 @@ Remember that parable about building your house on sand?
 
 The same applies to your application stacks.
 
-No one wants to end up on *Rogue Traders* because they’ve held a production environment together with a prayer, some pliers, and one very brave firewall rule.
+No one wants to end up on *Rogue Traders* because they’ve held a production environment together with a prayer, some pliers, and one solitary firewall rule (any-any).
 
 Having worked in MSPs over the years, there are few things more unnerving than a “Landing Zone Review” task.
 
@@ -28,15 +28,13 @@ Most of the time, you end up feeling like the builder who comes in after the pre
 
 > “Blinking heck, who’s done this?”
 
-And the awkward bit?
-
-It was probably someone trying to help under pressure, with too little time and not enough foundation to work from.
+It was probably a family friend, someone trying to help, under pressure, with too little time and not enough foundation to work from.
 
 How it usually gets messy:
 
 One team creates a subscription called “Azure subscription 1”.  
-Another team builds a virtual network.  
-Someone deploys a firewall because “firewalls are secure, right?”  
+Another team builds *the*() virtual network.  
+Someone deploys a firewall because “firewalls are secure”  
 Tags are optional.  
 Naming standards are an abstract concept.  
 Monitoring gets added after the outage.
@@ -48,8 +46,8 @@ That is the problem **Azure landing zones** are designed to solve.
 This is the first post in my Azure landing zone series, where I’ll break down Microsoft’s guidance in plain English and connect it to real-world Azure architecture decisions.
 
 No fluff.  
-No copy-paste documentation, or at least I’ll try.  
-Just practical cloud foundations explained properly.
+No copy-paste documentation (I'll try)
+Just practical cloud foundations explained the way I explain things..
 
 ---
 
@@ -67,7 +65,7 @@ But cloud environments grow quickly.
 
 What starts as:
 
-> “We just need to get this app live”
+> “We just need to get this app live, we'll worry about the rest later”
 
 can quickly become:
 
@@ -111,9 +109,7 @@ A landing zone is not just:
 - a subscription
 - a virtual network
 - a naming convention
-- a Terraform repo
 - a set of Azure Policy assignments
-- a lush architecture diagram
 
 It can include all of those things, but it is bigger than any single component.
 
@@ -150,7 +146,7 @@ Microsoft also separates the idea of landing zones into two useful categories:
 
 | Landing zone type | What it means |
 |---|---|
-| **Platform landing zone** | Shared foundation services such as identity, connectivity, management, governance, and security |
+| **Platform landing zone** | Shared foundation services such as identity, connectivity and management. 
 | **Application landing zone** | The environment where actual workloads and applications are deployed |
 
 That split matters.
@@ -189,51 +185,34 @@ My practical way of remembering it:
 > Landing zones prepare the platform.  
 > WAF improves the workloads.
 
-That is not an official Microsoft phrase.  
-That is just the mental model I use when explaining it to clients and peers.
+That is just the mental model I use when explaining it to clients and peers (not from Microsoft's mouth).
 
-I’ll go deeper into how these three fit together in the next post.
+I’ll go deeper into how these three fit together in a later, maybe.
 
 ---
 
 ## A real-world scenario
 
-Let’s say a company starts with one Azure subscription.
+Let’s say a company begins with one, solitary Azure subscription.
 
-At first, it works fine.
+At first, it feels simple.
 
-They deploy a few resource groups:
+A web app goes here.  
+A database goes there.  
+Networking sits somewhere nearby.  
+Dev and test environments share the same space because “it’s only temporary”.
 
-- one for a web app
-- one for a database
-- one for networking
-- one for a test environment
+Then the business grows rapidly.
 
-Then the business grows.
+That one subscription now needs to support production workloads, non-production workloads, hybrid connectivity, private access, central logging, security monitoring, cost reporting, backup requirements, audit evidence, and different access levels for different teams.
 
-Now they need:
+What started as an empty drawer, has now become that top drawer of doom. Cables, wrappers, odd screws and birthday cards from those nearest.
 
-- production and non-production separation
-- different access for developers, operators, and security teams
-- private connectivity back to on-premises
-- central logging
-- Microsoft Defender for Cloud
-- cost reporting by application
-- policies for allowed regions
-- tagging standards
-- backup requirements
-- audit evidence
-- disaster recovery planning
-
-Suddenly, the original subscription feels like that drawer everyone has at home: full of cables, sweet wrappers, old receipts, and things nobody wants to take ownership of.
-
-Everything is technically “in Azure,” but the environment is difficult to govern.
-
-Nobody wants to rebuild the foundation once production workloads are already sitting on top of it.
+Everything is technically “in Azure”, but nobody is completely sure who owns what, what is compliant, where the logs are going, or what would break if someone cleaned it up.
 
 That is where landing zones help.
 
-They encourage you to think about structure before scale makes structure painful.
+They give the environment structure before scale makes structure painful.
 
 ---
 
@@ -241,28 +220,48 @@ They encourage you to think about structure before scale makes structure painful
 
 At a high level, an Azure landing zone usually involves decisions around:
 
-- Microsoft Entra ID
+- identity and access, usually starting with Microsoft Entra ID
+- subscription structure
 - management groups
-- subscriptions
 - resource groups
 - Azure Policy
-- Azure role-based access control
-- networking
-- DNS
-- monitoring
+- role-based access control
+- networking and DNS
+- monitoring and logging
 - security tooling
 - backup and recovery
 - deployment automation
 
-One of the most important concepts is the **management group hierarchy**.
+That looks like a lot.
 
-Management groups allow you to organize subscriptions and apply governance controls above the subscription level.
+But really, the question is simple:
 
-That matters because once you have many subscriptions, you do not want to configure everything one subscription at a time.
+> How do we want Azure to behave before everyone starts deploying into it?
 
-Management groups are important because they let you apply governance above individual subscriptions rather than repeating the same controls everywhere.
+To answer that, you need structure.
 
-For example, you may have a hierarchy that separates:
+In Azure, that structure usually starts with the hierarchy:
+
+```text
+Management groups
+└── Subscriptions
+    └── Resource groups
+        └── Resources
+```
+
+A **resource group** is where related Azure resources usually live.
+
+A **subscription** gives you a boundary for billing, access, policy, and scale.
+
+A **management group** sits above subscriptions, helping you apply governance across multiple subscriptions without repeating yourself everywhere.
+
+Think of it like managing a building.
+
+You do not want to manage every plug socket, door, and light switch individually if you can set sensible rules at the floor, building, or site level.
+
+Azure is similar.
+
+For example, you might separate:
 
 - platform services
 - production workloads
@@ -270,17 +269,24 @@ For example, you may have a hierarchy that separates:
 - sandbox environments
 - decommissioned subscriptions
 
-Then policies, access controls, and standards can be applied at the right level.
+Then you can apply the right controls at the right level.
 
-The aim is not to make Azure complicated.
+Broad security rules can apply everywhere.  
+Production can have stricter controls.  
+Sandboxes can have more flexibility.  
+Old subscriptions can be isolated while they are being retired.
 
-The aim is to make Azure predictable.
+That is the point of the landing zone structure.
+
+Not to make Azure more complicated.
+
+To make Azure predictable.
 
 ---
 
 ## Example landing zone view
 
-Here is a simplified view of the idea:
+Here is a simplified view of that idea:
 
 ```mermaid
 flowchart TD
@@ -301,13 +307,18 @@ flowchart TD
 
 In plain English:
 
-The **platform landing zone** provides the shared foundation.
+The **Microsoft Entra tenant** is where identity starts: users, groups, service principals, managed identities, and access decisions all depend on it.
+
+**Management groups** help organise subscriptions and apply governance.
+
+The **platform landing zone** provides shared foundation services like identity, connectivity, management, security, and governance.
 
 The **application landing zones** are where business workloads live.
 
 The platform gives teams the roads, rules, security, connectivity, and shared services.
 
 The application teams build on top of that foundation.
+```
 
 ---
 

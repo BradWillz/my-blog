@@ -133,45 +133,7 @@
             <li>
                 <a href="#the-technical-view" aria-label="The technical view">The technical view</a></li>
             <li>
-                <a href="#example-landing-zone-view" aria-label="Example landing zone view">Example landing zone view</a></li>
-            <li>
-                <a href="#practical-note-dont-blindly-copy-the-reference-architecture" aria-label="Practical note: don’t blindly copy the reference architecture">Practical note: don’t blindly copy the reference architecture</a></li>
-            <li>
-                <a href="#common-mistakes" aria-label="Common mistakes">Common mistakes</a><ul>
-                    
-            <li>
-                <a href="#1-thinking-a-landing-zone-is-just-a-subscription" aria-label="1. Thinking a landing zone is just a subscription">1. Thinking a landing zone is just a subscription</a></li>
-            <li>
-                <a href="#2-starting-with-workloads-before-designing-the-foundation" aria-label="2. Starting with workloads before designing the foundation">2. Starting with workloads before designing the foundation</a></li>
-            <li>
-                <a href="#3-treating-networking-as-an-afterthought" aria-label="3. Treating networking as an afterthought">3. Treating networking as an afterthought</a></li>
-            <li>
-                <a href="#4-giving-people-access-directly-instead-of-using-a-proper-model" aria-label="4. Giving people access directly instead of using a proper model">4. Giving people access directly instead of using a proper model</a></li>
-            <li>
-                <a href="#5-adding-governance-only-after-something-goes-wrong" aria-label="5. Adding governance only after something goes wrong">5. Adding governance only after something goes wrong</a></li>
-            <li>
-                <a href="#6-thinking-the-landing-zone-is-done" aria-label="6. Thinking the landing zone is “done”">6. Thinking the landing zone is “done”</a></li></ul>
-            </li>
-            <li>
-                <a href="#design-considerations" aria-label="Design considerations">Design considerations</a><ul>
-                    
-            <li>
-                <a href="#governance" aria-label="Governance">Governance</a></li>
-            <li>
-                <a href="#security" aria-label="Security">Security</a></li>
-            <li>
-                <a href="#networking" aria-label="Networking">Networking</a></li>
-            <li>
-                <a href="#operations" aria-label="Operations">Operations</a></li>
-            <li>
-                <a href="#cost" aria-label="Cost">Cost</a></li></ul>
-            </li>
-            <li>
-                <a href="#key-takeaways" aria-label="Key takeaways">Key takeaways</a></li>
-            <li>
-                <a href="#official-microsoft-references" aria-label="Official Microsoft references">Official Microsoft references</a></li>
-            <li>
-                <a href="#next-article" aria-label="Next article">Next article</a>
+                <a href="#example-landing-zone-view" aria-label="Example landing zone view">Example landing zone view</a>
             </li>
         </ul>
     </div>
@@ -179,18 +141,17 @@
 
   <div class="post-content md-content"><p>Remember that parable about building your house on sand?</p>
 <p>The same applies to your application stacks.</p>
-<p>No one wants to end up on <em>Rogue Traders</em> because they’ve held a production environment together with a prayer, some pliers, and one very brave firewall rule.</p>
+<p>No one wants to end up on <em>Rogue Traders</em> because they’ve held a production environment together with a prayer, some pliers, and one solitary firewall rule (any-any).</p>
 <p>Having worked in MSPs over the years, there are few things more unnerving than a “Landing Zone Review” task.</p>
 <p>Most of the time, you end up feeling like the builder who comes in after the previous one and says:</p>
 <blockquote>
 <p>“Blinking heck, who’s done this?”</p>
 </blockquote>
-<p>And the awkward bit?</p>
-<p>It was probably someone trying to help under pressure, with too little time and not enough foundation to work from.</p>
+<p>It was probably a family friend, someone trying to help, under pressure, with too little time and not enough foundation to work from.</p>
 <p>How it usually gets messy:</p>
 <p>One team creates a subscription called “Azure subscription 1”.<br>
-Another team builds a virtual network.<br>
-Someone deploys a firewall because “firewalls are secure, right?”<br>
+Another team builds <em>the</em>() virtual network.<br>
+Someone deploys a firewall because “firewalls are secure”<br>
 Tags are optional.<br>
 Naming standards are an abstract concept.<br>
 Monitoring gets added after the outage.</p>
@@ -198,8 +159,8 @@ Monitoring gets added after the outage.</p>
 <p>That is the problem <strong>Azure landing zones</strong> are designed to solve.</p>
 <p>This is the first post in my Azure landing zone series, where I’ll break down Microsoft’s guidance in plain English and connect it to real-world Azure architecture decisions.</p>
 <p>No fluff.<br>
-No copy-paste documentation, or at least I’ll try.<br>
-Just practical cloud foundations explained properly.</p>
+No copy-paste documentation (I&rsquo;ll try)
+Just practical cloud foundations explained the way I explain things..</p>
 <hr>
 <h2 id="the-problem-azure-is-simple-yet-hard-to-untangle">The problem: Azure is simple, yet hard to untangle<a hidden class="anchor" aria-hidden="true" href="#the-problem-azure-is-simple-yet-hard-to-untangle">#</a></h2>
 <p>Azure makes it very easy to get started.</p>
@@ -209,7 +170,7 @@ Just practical cloud foundations explained properly.</p>
 <p>But cloud environments grow quickly.</p>
 <p>What starts as:</p>
 <blockquote>
-<p>“We just need to get this app live”</p>
+<p>“We just need to get this app live, we&rsquo;ll worry about the rest later”</p>
 </blockquote>
 <p>can quickly become:</p>
 <blockquote>
@@ -243,9 +204,7 @@ Just practical cloud foundations explained properly.</p>
 <li>a subscription</li>
 <li>a virtual network</li>
 <li>a naming convention</li>
-<li>a Terraform repo</li>
 <li>a set of Azure Policy assignments</li>
-<li>a lush architecture diagram</li>
 </ul>
 <p>It can include all of those things, but it is bigger than any single component.</p>
 <p>A landing zone is the combination of architecture, governance, security, identity, networking, operations, and automation that makes Azure usable at scale.</p>
@@ -283,7 +242,7 @@ Just practical cloud foundations explained properly.</p>
 	<tbody>
 			<tr>
 					<td><strong>Platform landing zone</strong></td>
-					<td>Shared foundation services such as identity, connectivity, management, governance, and security</td>
+					<td>Shared foundation services such as identity, connectivity and management.</td>
 			</tr>
 			<tr>
 					<td><strong>Application landing zone</strong></td>
@@ -315,62 +274,56 @@ Just practical cloud foundations explained properly.</p>
 Landing zones prepare the platform.<br>
 WAF improves the workloads.</p>
 </blockquote>
-<p>That is not an official Microsoft phrase.<br>
-That is just the mental model I use when explaining it to clients and peers.</p>
-<p>I’ll go deeper into how these three fit together in the next post.</p>
+<p>That is just the mental model I use when explaining it to clients and peers (not from Microsoft&rsquo;s mouth).</p>
+<p>I’ll go deeper into how these three fit together in a later, maybe.</p>
 <hr>
 <h2 id="a-real-world-scenario">A real-world scenario<a hidden class="anchor" aria-hidden="true" href="#a-real-world-scenario">#</a></h2>
-<p>Let’s say a company starts with one Azure subscription.</p>
-<p>At first, it works fine.</p>
-<p>They deploy a few resource groups:</p>
-<ul>
-<li>one for a web app</li>
-<li>one for a database</li>
-<li>one for networking</li>
-<li>one for a test environment</li>
-</ul>
-<p>Then the business grows.</p>
-<p>Now they need:</p>
-<ul>
-<li>production and non-production separation</li>
-<li>different access for developers, operators, and security teams</li>
-<li>private connectivity back to on-premises</li>
-<li>central logging</li>
-<li>Microsoft Defender for Cloud</li>
-<li>cost reporting by application</li>
-<li>policies for allowed regions</li>
-<li>tagging standards</li>
-<li>backup requirements</li>
-<li>audit evidence</li>
-<li>disaster recovery planning</li>
-</ul>
-<p>Suddenly, the original subscription feels like that drawer everyone has at home: full of cables, sweet wrappers, old receipts, and things nobody wants to take ownership of.</p>
-<p>Everything is technically “in Azure,” but the environment is difficult to govern.</p>
-<p>Nobody wants to rebuild the foundation once production workloads are already sitting on top of it.</p>
+<p>Let’s say a company begins with one, solitary Azure subscription.</p>
+<p>At first, it feels simple.</p>
+<p>A web app goes here.<br>
+A database goes there.<br>
+Networking sits somewhere nearby.<br>
+Dev and test environments share the same space because “it’s only temporary”.</p>
+<p>Then the business grows rapidly.</p>
+<p>That one subscription now needs to support production workloads, non-production workloads, hybrid connectivity, private access, central logging, security monitoring, cost reporting, backup requirements, audit evidence, and different access levels for different teams.</p>
+<p>What started as an empty drawer, has now become that top drawer of doom. Cables, wrappers, odd screws and birthday cards from those nearest.</p>
+<p>Everything is technically “in Azure”, but nobody is completely sure who owns what, what is compliant, where the logs are going, or what would break if someone cleaned it up.</p>
 <p>That is where landing zones help.</p>
-<p>They encourage you to think about structure before scale makes structure painful.</p>
+<p>They give the environment structure before scale makes structure painful.</p>
 <hr>
 <h2 id="the-technical-view">The technical view<a hidden class="anchor" aria-hidden="true" href="#the-technical-view">#</a></h2>
 <p>At a high level, an Azure landing zone usually involves decisions around:</p>
 <ul>
-<li>Microsoft Entra ID</li>
+<li>identity and access, usually starting with Microsoft Entra ID</li>
+<li>subscription structure</li>
 <li>management groups</li>
-<li>subscriptions</li>
 <li>resource groups</li>
 <li>Azure Policy</li>
-<li>Azure role-based access control</li>
-<li>networking</li>
-<li>DNS</li>
-<li>monitoring</li>
+<li>role-based access control</li>
+<li>networking and DNS</li>
+<li>monitoring and logging</li>
 <li>security tooling</li>
 <li>backup and recovery</li>
 <li>deployment automation</li>
 </ul>
-<p>One of the most important concepts is the <strong>management group hierarchy</strong>.</p>
-<p>Management groups allow you to organize subscriptions and apply governance controls above the subscription level.</p>
-<p>That matters because once you have many subscriptions, you do not want to configure everything one subscription at a time.</p>
-<p>Management groups are important because they let you apply governance above individual subscriptions rather than repeating the same controls everywhere.</p>
-<p>For example, you may have a hierarchy that separates:</p>
+<p>That looks like a lot.</p>
+<p>But really, the question is simple:</p>
+<blockquote>
+<p>How do we want Azure to behave before everyone starts deploying into it?</p>
+</blockquote>
+<p>To answer that, you need structure.</p>
+<p>In Azure, that structure usually starts with the hierarchy:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Management groups
+</span></span><span class="line"><span class="cl">└── Subscriptions
+</span></span><span class="line"><span class="cl">    └── Resource groups
+</span></span><span class="line"><span class="cl">        └── Resources
+</span></span></code></pre></div><p>A <strong>resource group</strong> is where related Azure resources usually live.</p>
+<p>A <strong>subscription</strong> gives you a boundary for billing, access, policy, and scale.</p>
+<p>A <strong>management group</strong> sits above subscriptions, helping you apply governance across multiple subscriptions without repeating yourself everywhere.</p>
+<p>Think of it like managing a building.</p>
+<p>You do not want to manage every plug socket, door, and light switch individually if you can set sensible rules at the floor, building, or site level.</p>
+<p>Azure is similar.</p>
+<p>For example, you might separate:</p>
 <ul>
 <li>platform services</li>
 <li>production workloads</li>
@@ -378,12 +331,17 @@ That is just the mental model I use when explaining it to clients and peers.</p>
 <li>sandbox environments</li>
 <li>decommissioned subscriptions</li>
 </ul>
-<p>Then policies, access controls, and standards can be applied at the right level.</p>
-<p>The aim is not to make Azure complicated.</p>
-<p>The aim is to make Azure predictable.</p>
+<p>Then you can apply the right controls at the right level.</p>
+<p>Broad security rules can apply everywhere.<br>
+Production can have stricter controls.<br>
+Sandboxes can have more flexibility.<br>
+Old subscriptions can be isolated while they are being retired.</p>
+<p>That is the point of the landing zone structure.</p>
+<p>Not to make Azure more complicated.</p>
+<p>To make Azure predictable.</p>
 <hr>
 <h2 id="example-landing-zone-view">Example landing zone view<a hidden class="anchor" aria-hidden="true" href="#example-landing-zone-view">#</a></h2>
-<p>Here is a simplified view of the idea:</p>
+<p>Here is a simplified view of that idea:</p>
 <pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart TD
     A[Microsoft Entra Tenant] --&gt; B[Management Groups]
 
@@ -399,120 +357,158 @@ That is just the mental model I use when explaining it to clients and peers.</p>
     D --&gt; D2[Workload Subscription - App 2]
     D --&gt; D3[Workload Subscription - App 3]
 </code></pre><p>In plain English:</p>
-<p>The <strong>platform landing zone</strong> provides the shared foundation.</p>
+<p>The <strong>Microsoft Entra tenant</strong> is where identity starts: users, groups, service principals, managed identities, and access decisions all depend on it.</p>
+<p><strong>Management groups</strong> help organise subscriptions and apply governance.</p>
+<p>The <strong>platform landing zone</strong> provides shared foundation services like identity, connectivity, management, security, and governance.</p>
 <p>The <strong>application landing zones</strong> are where business workloads live.</p>
 <p>The platform gives teams the roads, rules, security, connectivity, and shared services.</p>
 <p>The application teams build on top of that foundation.</p>
-<hr>
-<h2 id="practical-note-dont-blindly-copy-the-reference-architecture">Practical note: don’t blindly copy the reference architecture<a hidden class="anchor" aria-hidden="true" href="#practical-note-dont-blindly-copy-the-reference-architecture">#</a></h2>
-<p>Microsoft provides reference architecture and implementation options for Azure landing zones.</p>
-<p>That guidance is valuable.</p>
-<p>But your goal should not be to copy a diagram without understanding it.</p>
-<p>Your goal should be to understand the design principles, then tailor the architecture to your organization.</p>
-<p>A small company with a few workloads does not need the same operating model as a global enterprise with hundreds of subscriptions, strict compliance requirements, and multiple platform teams.</p>
-<p>The pattern matters.</p>
-<p>The context matters too.</p>
-<hr>
-<h2 id="common-mistakes">Common mistakes<a hidden class="anchor" aria-hidden="true" href="#common-mistakes">#</a></h2>
-<h3 id="1-thinking-a-landing-zone-is-just-a-subscription">1. Thinking a landing zone is just a subscription<a hidden class="anchor" aria-hidden="true" href="#1-thinking-a-landing-zone-is-just-a-subscription">#</a></h3>
-<p>A subscription can be part of a landing zone, but it is not the landing zone by itself.</p>
-<p>A landing zone is the wider architecture and operating model around that subscription.</p>
-<h3 id="2-starting-with-workloads-before-designing-the-foundation">2. Starting with workloads before designing the foundation<a hidden class="anchor" aria-hidden="true" href="#2-starting-with-workloads-before-designing-the-foundation">#</a></h3>
-<p>This is probably the most common mistake.</p>
-<p>It feels faster at the beginning, but it usually creates more work later.</p>
-<h3 id="3-treating-networking-as-an-afterthought">3. Treating networking as an afterthought<a hidden class="anchor" aria-hidden="true" href="#3-treating-networking-as-an-afterthought">#</a></h3>
-<p>Networking decisions are hard to reverse once workloads depend on them.</p>
-<p>Think carefully about connectivity, DNS, private access, hybrid routing, and inspection requirements early.</p>
-<h3 id="4-giving-people-access-directly-instead-of-using-a-proper-model">4. Giving people access directly instead of using a proper model<a hidden class="anchor" aria-hidden="true" href="#4-giving-people-access-directly-instead-of-using-a-proper-model">#</a></h3>
-<p>Direct user permissions may feel simple, but they become difficult to manage.</p>
-<p>Use groups, roles, least privilege, and clear ownership boundaries.</p>
-<h3 id="5-adding-governance-only-after-something-goes-wrong">5. Adding governance only after something goes wrong<a hidden class="anchor" aria-hidden="true" href="#5-adding-governance-only-after-something-goes-wrong">#</a></h3>
-<p>Azure Policy, tagging, allowed regions, diagnostic settings, and security controls are much easier to apply before the environment is full of production systems.</p>
-<h3 id="6-thinking-the-landing-zone-is-done">6. Thinking the landing zone is “done”<a hidden class="anchor" aria-hidden="true" href="#6-thinking-the-landing-zone-is-done">#</a></h3>
-<p>A landing zone is not a one-time project.</p>
-<p>It is a platform capability.</p>
-<p>It should evolve as your organization, workloads, security requirements, and Azure services evolve.</p>
-<hr>
-<h2 id="design-considerations">Design considerations<a hidden class="anchor" aria-hidden="true" href="#design-considerations">#</a></h2>
-<p>When thinking about your own Azure landing zone, start with questions like these.</p>
-<h3 id="governance">Governance<a hidden class="anchor" aria-hidden="true" href="#governance">#</a></h3>
-<ul>
-<li>How will subscriptions be organized?</li>
-<li>Which policies should apply everywhere?</li>
-<li>Which policies should vary by environment?</li>
-<li>How will naming and tagging work?</li>
-</ul>
-<h3 id="security">Security<a hidden class="anchor" aria-hidden="true" href="#security">#</a></h3>
-<ul>
-<li>Who gets access?</li>
-<li>How is privileged access managed?</li>
-<li>How are security recommendations reviewed?</li>
-<li>How are logs collected and retained?</li>
-</ul>
-<h3 id="networking">Networking<a hidden class="anchor" aria-hidden="true" href="#networking">#</a></h3>
-<ul>
-<li>Will workloads be internet-facing, private, or hybrid?</li>
-<li>Do you need hub-spoke networking, Azure Virtual WAN, or a simpler pattern?</li>
-<li>Where will DNS be managed?</li>
-<li>How will private endpoints be handled?</li>
-</ul>
-<h3 id="operations">Operations<a hidden class="anchor" aria-hidden="true" href="#operations">#</a></h3>
-<ul>
-<li>Where do logs go?</li>
-<li>Who responds to alerts?</li>
-<li>What is monitored centrally?</li>
-<li>What is the responsibility of each workload team?</li>
-</ul>
-<h3 id="cost">Cost<a hidden class="anchor" aria-hidden="true" href="#cost">#</a></h3>
-<ul>
-<li>How are costs tracked?</li>
-<li>Are tags mandatory?</li>
-<li>Who owns budget alerts?</li>
-<li>How are shared platform costs handled?</li>
-</ul>
-<p>These questions are not glamorous.</p>
-<p>But they are the questions that prevent cloud chaos.</p>
-<hr>
-<h2 id="key-takeaways">Key takeaways<a hidden class="anchor" aria-hidden="true" href="#key-takeaways">#</a></h2>
-<ul>
-<li>Azure landing zones help create a secure, governed, and scalable foundation for Azure workloads.</li>
-<li>A landing zone is more than a subscription, network, policy set, or deployment template.</li>
-<li>The real value is consistency across identity, governance, security, networking, and operations.</li>
-<li>Microsoft’s Cloud Adoption Framework helps structure the adoption journey.</li>
-<li>The Azure Well-Architected Framework helps improve workload design.</li>
-<li>Build the foundation before Azure becomes difficult to untangle.</li>
-</ul>
-<hr>
-<h2 id="official-microsoft-references">Official Microsoft references<a hidden class="anchor" aria-hidden="true" href="#official-microsoft-references">#</a></h2>
-<p>Only official Microsoft documentation was used for this article:</p>
-<ul>
-<li>
-<p>Microsoft Learn: What is an Azure landing zone?<br>
-<a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/">https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/</a></p>
-</li>
-<li>
-<p>Microsoft Learn: Azure landing zone design areas<br>
-<a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-areas">https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-areas</a></p>
-</li>
-<li>
-<p>Microsoft Learn: Ready your Azure environment for workloads<br>
-<a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/">https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/</a></p>
-</li>
-<li>
-<p>Microsoft Learn: What is the Azure Well-Architected Framework?<br>
-<a href="https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework">https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework</a></p>
-</li>
-<li>
-<p>Microsoft Learn: Platform landing zone implementation options<br>
-<a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/implementation-options">https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/implementation-options</a></p>
-</li>
-</ul>
-<hr>
-<h2 id="next-article">Next article<a hidden class="anchor" aria-hidden="true" href="#next-article">#</a></h2>
-<p>In the next post, I’ll break down how the <strong>Cloud Adoption Framework</strong>, <strong>Azure landing zones</strong>, and the <strong>Azure Well-Architected Framework</strong> fit together.</p>
-<p>They are often mentioned in the same conversations, but they solve different parts of the Azure architecture puzzle.</p>
-<p>Understanding that relationship makes the rest of Azure architecture much easier to reason about.</p>
+<pre tabindex="0"><code>
+---
 
+## Practical note: don’t blindly copy the reference architecture
+
+Microsoft provides reference architecture and implementation options for Azure landing zones.
+
+That guidance is valuable.
+
+But your goal should not be to copy a diagram without understanding it.
+
+Your goal should be to understand the design principles, then tailor the architecture to your organization.
+
+A small company with a few workloads does not need the same operating model as a global enterprise with hundreds of subscriptions, strict compliance requirements, and multiple platform teams.
+
+The pattern matters.
+
+The context matters too.
+
+---
+
+## Common mistakes
+
+### 1. Thinking a landing zone is just a subscription
+
+A subscription can be part of a landing zone, but it is not the landing zone by itself.
+
+A landing zone is the wider architecture and operating model around that subscription.
+
+### 2. Starting with workloads before designing the foundation
+
+This is probably the most common mistake.
+
+It feels faster at the beginning, but it usually creates more work later.
+
+### 3. Treating networking as an afterthought
+
+Networking decisions are hard to reverse once workloads depend on them.
+
+Think carefully about connectivity, DNS, private access, hybrid routing, and inspection requirements early.
+
+### 4. Giving people access directly instead of using a proper model
+
+Direct user permissions may feel simple, but they become difficult to manage.
+
+Use groups, roles, least privilege, and clear ownership boundaries.
+
+### 5. Adding governance only after something goes wrong
+
+Azure Policy, tagging, allowed regions, diagnostic settings, and security controls are much easier to apply before the environment is full of production systems.
+
+### 6. Thinking the landing zone is “done”
+
+A landing zone is not a one-time project.
+
+It is a platform capability.
+
+It should evolve as your organization, workloads, security requirements, and Azure services evolve.
+
+---
+
+## Design considerations
+
+When thinking about your own Azure landing zone, start with questions like these.
+
+### Governance
+
+- How will subscriptions be organized?
+- Which policies should apply everywhere?
+- Which policies should vary by environment?
+- How will naming and tagging work?
+
+### Security
+
+- Who gets access?
+- How is privileged access managed?
+- How are security recommendations reviewed?
+- How are logs collected and retained?
+
+### Networking
+
+- Will workloads be internet-facing, private, or hybrid?
+- Do you need hub-spoke networking, Azure Virtual WAN, or a simpler pattern?
+- Where will DNS be managed?
+- How will private endpoints be handled?
+
+### Operations
+
+- Where do logs go?
+- Who responds to alerts?
+- What is monitored centrally?
+- What is the responsibility of each workload team?
+
+### Cost
+
+- How are costs tracked?
+- Are tags mandatory?
+- Who owns budget alerts?
+- How are shared platform costs handled?
+
+These questions are not glamorous.
+
+But they are the questions that prevent cloud chaos.
+
+---
+
+## Key takeaways
+
+- Azure landing zones help create a secure, governed, and scalable foundation for Azure workloads.
+- A landing zone is more than a subscription, network, policy set, or deployment template.
+- The real value is consistency across identity, governance, security, networking, and operations.
+- Microsoft’s Cloud Adoption Framework helps structure the adoption journey.
+- The Azure Well-Architected Framework helps improve workload design.
+- Build the foundation before Azure becomes difficult to untangle.
+
+---
+
+## Official Microsoft references
+
+Only official Microsoft documentation was used for this article:
+
+- Microsoft Learn: What is an Azure landing zone?  
+  https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/
+
+- Microsoft Learn: Azure landing zone design areas  
+  https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-areas
+
+- Microsoft Learn: Ready your Azure environment for workloads  
+  https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/
+
+- Microsoft Learn: What is the Azure Well-Architected Framework?  
+  https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework
+
+- Microsoft Learn: Platform landing zone implementation options  
+  https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/implementation-options
+
+---
+
+## Next article
+
+In the next post, I’ll break down how the **Cloud Adoption Framework**, **Azure landing zones**, and the **Azure Well-Architected Framework** fit together.
+
+They are often mentioned in the same conversations, but they solve different parts of the Azure architecture puzzle.
+
+Understanding that relationship makes the rest of Azure architecture much easier to reason about.
+</code></pre>
 
   </div>
 
