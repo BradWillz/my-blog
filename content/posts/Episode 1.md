@@ -108,6 +108,7 @@ It is the prepared foundation that allows teams to deploy Azure workloads in a s
 A landing zone is not just:
 
 - a subscription
+- a resource group
 - a virtual network
 - a naming convention
 - a set of Azure Policy assignments
@@ -147,7 +148,7 @@ Microsoft also separates the idea of landing zones into two useful categories:
 
 | Landing zone type | What it means |
 |---|---|
-| **Platform landing zone** | Shared foundation services such as identity, connectivity and management. 
+| **Platform landing zone** | Shared foundation services such as identity, connectivity and management. |
 | **Application landing zone** | The environment where actual workloads and applications are deployed |
 
 That split matters.
@@ -156,39 +157,19 @@ The platform team should not have to redesign networking every time a new applic
 
 Application teams should not have to invent governance from scratch.
 
-Security teams should not have to chase every workload after deployment.
-
 A good landing zone gives each team a clearer place to work from.
 
----
+You will also see landing zones mentioned alongside the **Cloud Adoption Framework** and the **Azure Well-Architected Framework**.
 
-## CAF, WAF, and landing zones without the jargon
+For now, the simple version is this:
 
-You will often hear three Microsoft terms together:
+> CAF helps guide cloud adoption.  
+> Landing zones prepare the Azure foundation.  
+> WAF helps improve the workloads that run on top.
 
-- Cloud Adoption Framework
-- Azure landing zones
-- Azure Well-Architected Framework
+That is not an official Microsoft phrase. It is just the mental model I use when explaining it to clients and peers.
 
-They are related, but they are not the same thing.
-
-Here is the simple version.
-
-**Cloud Adoption Framework**, or CAF, helps organizations plan and manage their cloud adoption journey.
-
-**Azure landing zones** help prepare the Azure environment so teams can deploy workloads consistently.
-
-**Azure Well-Architected Framework**, or WAF, helps teams design and improve individual workloads across reliability, security, cost optimization, operational excellence, and performance efficiency.
-
-My practical way of remembering it:
-
-> CAF helps you adopt cloud.  
-> Landing zones prepare the platform.  
-> WAF improves the workloads.
-
-That is just the mental model I use when explaining it to clients and peers (not from Microsoft's mouth).
-
-I’ll go deeper into how these three fit together in a later, maybe.
+I’ll unpack that properly in a later post.
 
 ---
 
@@ -304,7 +285,7 @@ flowchart TD
     D --> D1[Workload Subscription - App 1]
     D --> D2[Workload Subscription - App 2]
     D --> D3[Workload Subscription - App 3]
-  {{< /mermaid >}}
+{{< /mermaid >}}
 
 In plain English:
 
