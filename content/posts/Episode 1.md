@@ -319,6 +319,8 @@ The pattern matters.
 
 The context matters too.
 
+Your wallet will thank you.
+
 ---
 
 ## Common mistakes
