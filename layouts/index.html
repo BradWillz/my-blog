@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $posts := where site.RegularPages "Section" "posts" }}
+{{ $posts := where site.RegularPages "Section" "in" (slice "tech" "personal") }}
 
 <section class="home-hero">
   <div class="home-hero__copy">
@@ -9,8 +9,8 @@
       {{ .Content }}
     </div>
     <div class="home-actions">
-      <a class="button" href="#latest">Latest posts</a>
-      <a class="button button--ghost" href="#gallery">Photo gallery</a>
+      <a class="button" href="{{ "tech/" | relLangURL }}">Tech Blog</a>
+      <a class="button button--ghost" href="{{ "personal/" | relLangURL }}">Personal Blog</a>
     </div>
   </div>
 

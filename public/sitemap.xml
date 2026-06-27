@@ -1,1 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://gwenfron.co.uk/categories/architecture/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/categories/azure/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/tags/azure/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/tags/azure-landing-zones/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/posts/episode-1/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/categories/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/tags/cloud-adoption-framework/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/tags/cloud-architecture/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/posts/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/tags/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url><url><loc>https://gwenfron.co.uk/tags/well-architected-framework/</loc><lastmod>2026-06-27T00:00:00+00:00</lastmod></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://127.0.0.1:52418/categories/architecture/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/categories/azure/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/tags/azure/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/tags/azure-landing-zones/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/tech/episode-1/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/categories/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/tags/cloud-adoption-framework/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/tags/cloud-architecture/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/tags/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/tech/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/tags/well-architected-framework/</loc>
+    <lastmod>2026-06-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://127.0.0.1:52418/personal/</loc>
+  </url><url>
+    <loc>http://127.0.0.1:52418/posts/</loc>
+  </url>
+</urlset>
