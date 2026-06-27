@@ -6,6 +6,49 @@
     <description>Recent content in Tags on Gwenfron</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 27 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://127.0.0.1:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure</title>
+      <link>http://127.0.0.1:1313/tags/azure/</link>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1313/tags/azure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure Landing Zones</title>
+      <link>http://127.0.0.1:1313/tags/azure-landing-zones/</link>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1313/tags/azure-landing-zones/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud Adoption Framework</title>
+      <link>http://127.0.0.1:1313/tags/cloud-adoption-framework/</link>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1313/tags/cloud-adoption-framework/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud Architecture</title>
+      <link>http://127.0.0.1:1313/tags/cloud-architecture/</link>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1313/tags/cloud-architecture/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Well-Architected Framework</title>
+      <link>http://127.0.0.1:1313/tags/well-architected-framework/</link>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1313/tags/well-architected-framework/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure Architecture</title>
+      <link>http://127.0.0.1:1313/tags/azure-architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:1313/tags/azure-architecture/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
