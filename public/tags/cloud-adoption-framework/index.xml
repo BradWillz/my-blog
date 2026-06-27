@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Cloud Adoption Framework on Gwenfron</title><link>https://gwenfron.co.uk/tags/cloud-adoption-framework/</link><description>Recent content in Cloud Adoption Framework on Gwenfron</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 27 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://gwenfron.co.uk/tags/cloud-adoption-framework/index.xml" rel="self" type="application/rss+xml"/><item><title>Azure Landing Zones Explained: The Foundation You Should’ve Built Earlier</title><link>https://gwenfron.co.uk/tech/episode-1/</link><pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate><guid>https://gwenfron.co.uk/tech/episode-1/</guid><description>A practical, plain-English introduction to Azure landing zones, why they matter, and how they help teams build secure and scalable Azure environments.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cloud Adoption Framework on Gwenfron</title>
+    <link>http://127.0.0.1:52418/tags/cloud-adoption-framework/</link>
+    <description>Recent content in Cloud Adoption Framework on Gwenfron</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://127.0.0.1:52418/tags/cloud-adoption-framework/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure Landing Zones Explained: The Foundation You Should’ve Built Earlier</title>
+      <link>http://127.0.0.1:52418/tech/episode-1/</link>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://127.0.0.1:52418/tech/episode-1/</guid>
+      <description>A practical, plain-English introduction to Azure landing zones, why they matter, and how they help teams build secure and scalable Azure environments.</description>
+    </item>
+  </channel>
+</rss>

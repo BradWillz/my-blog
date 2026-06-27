@@ -9,3 +9,16 @@
   color: var(--secondary);
   max-width: 70ch;
 }
+
+.post-back-link {
+  display: inline-block;
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.post-back-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}

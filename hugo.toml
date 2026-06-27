@@ -9,6 +9,16 @@ description = 'Notes, updates, photos, and writing from Gwenfron.'
 [params.label]
 text = 'Home'
 
+[[menu.main]]
+name = 'Tech Blog'
+url = '/tech/'
+weight = 10
+
+[[menu.main]]
+name = 'Personal Blog'
+url = '/personal/'
+weight = 20
+
 [markup]
 	[markup.highlight]
 		noClasses = false
