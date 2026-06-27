@@ -1,4 +1,14 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://gwenfron.co.uk/'
 locale = 'en-us'
-title = 'My New Hugo Project'
+title = 'Gwenfron'
 theme = 'PaperMod'
+
+[params]
+description = 'Notes, updates, photos, and writing from Gwenfron.'
+
+[params.label]
+text = 'Home'
+
+[markup]
+	[markup.highlight]
+		noClasses = false

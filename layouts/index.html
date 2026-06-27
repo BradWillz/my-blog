@@ -1,0 +1,44 @@
+{{ define "main" }}
+{{ $posts := where site.RegularPages "Section" "posts" }}
+
+<section class="home-hero">
+  <div class="home-hero__copy">
+    <p class="home-kicker">Hiya. Welcome to.</p>
+    <h1>{{ site.Title }}</h1>
+    <div class="home-intro md-content">
+      {{ .Content }}
+    </div>
+    <div class="home-actions">
+      <a class="button" href="#latest">Latest posts</a>
+      <a class="button button--ghost" href="#gallery">Photo gallery</a>
+    </div>
+  </div>
+
+  <div class="home-hero__art">
+    <img src="/images/home-hero.svg" alt="Abstract illustration for the homepage" width="720" height="720" />
+  </div>
+</section>
+
+<section class="home-latest" id="latest">
+  <div class="home-section-heading">
+    <p class="home-kicker">Latest writing</p>
+    <h2>Recent posts</h2>
+  </div>
+
+  {{ if gt (len $posts) 0 }}
+  <div class="home-post-grid">
+    {{ range first 3 $posts }}
+    <article class="home-post-card">
+      <p class="home-post-card__meta">{{ .Date.Format "2 Jan 2006" }}</p>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Summary | plainify | htmlUnescape }}</p>
+    </article>
+    {{ end }}
+  </div>
+  {{ else }}
+  <div class="home-empty">
+    <p>No published posts yet.</p>
+  </div>
+  {{ end }}
+</section>
+{{ end }}

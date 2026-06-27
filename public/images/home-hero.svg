@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" role="img" aria-label="Abstract homepage illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7efe7"/>
+      <stop offset="100%" stop-color="#dbe8f5"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8d5b4f"/>
+      <stop offset="100%" stop-color="#2f4a72"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="720" rx="64" fill="url(#bg)"/>
+  <circle cx="500" cy="190" r="130" fill="#fff" opacity="0.55"/>
+  <circle cx="235" cy="470" r="200" fill="#ffffff" opacity="0.42"/>
+  <path d="M134 484c74-104 166-167 277-188 84-16 150 0 200 49" fill="none" stroke="url(#ring)" stroke-width="26" stroke-linecap="round"/>
+  <path d="M167 240c80 24 137 77 171 160" fill="none" stroke="#6d8fb4" stroke-width="20" stroke-linecap="round" opacity="0.9"/>
+  <path d="M495 542c41-76 96-131 164-165" fill="none" stroke="#bf8d57" stroke-width="20" stroke-linecap="round" opacity="0.85"/>
+  <rect x="260" y="276" width="220" height="110" rx="28" fill="#132238" opacity="0.9"/>
+  <rect x="297" y="308" width="146" height="18" rx="9" fill="#f7efe7" opacity="0.92"/>
+  <rect x="297" y="340" width="92" height="14" rx="7" fill="#f7efe7" opacity="0.72"/>
+</svg>
