@@ -158,6 +158,8 @@ Application teams should not have to invent governance from scratch.
 
 A good landing zone gives each team a clearer place to work from.
 
+## CAF, WAF, and landing zones
+
 You will also see landing zones mentioned alongside the **Cloud Adoption Framework** and the **Azure Well-Architected Framework**.
 
 For now, the simple version is this:
@@ -269,19 +271,19 @@ Here is a simplified view of that idea:
 
 {{< mermaid >}}
 flowchart TD
-    A[Microsoft Entra Tenant] --> B[Management Groups]
+  A[Microsoft Entra<br/>Tenant] --> B[Management<br/>Groups]
 
-    B --> C[Platform Landing Zone]
-    B --> D[Application Landing Zones]
+  B --> C[Platform<br/>LZ]
+  B --> D[App<br/>LZs]
 
     C --> C1[Identity]
     C --> C2[Connectivity]
     C --> C3[Management]
-    C --> C4[Security and Governance]
+  C --> C4[Security &<br/>Governance]
 
-    D --> D1[Workload Subscription - App 1]
-    D --> D2[Workload Subscription - App 2]
-    D --> D3[Workload Subscription - App 3]
+  D --> D1[Sub<br/>App 1]
+  D --> D2[Sub<br/>App 2]
+  D --> D3[Sub<br/>App 3]
 {{< /mermaid >}}
 
 In plain English:

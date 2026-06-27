@@ -2,12 +2,112 @@
 <link rel="stylesheet" href="/css/home.css">
 {{- end -}}
 
+{{- if .IsPage -}}
+<link rel="stylesheet" href="/css/post.css">
+{{- end -}}
+
 {{- if .Params.mermaid -}}
+<link rel="stylesheet" href="/css/mermaid.css">
 <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
+	function ensureMermaidLightbox() {
+		let lightbox = document.getElementById("mermaid-lightbox");
+		if (lightbox) return lightbox;
+
+		lightbox = document.createElement("div");
+		lightbox.id = "mermaid-lightbox";
+		lightbox.className = "mermaid-lightbox";
+		lightbox.innerHTML =
+			'<button type="button" class="mermaid-lightbox__close" aria-label="Close diagram">x</button>' +
+			'<div class="mermaid-lightbox__canvas"></div>';
+
+		lightbox.addEventListener("click", function (event) {
+			if (event.target === lightbox || event.target.classList.contains("mermaid-lightbox__close")) {
+				lightbox.classList.remove("is-open");
+				document.body.classList.remove("mermaid-lightbox-open");
+			}
+		});
+
+		document.addEventListener("keydown", function (event) {
+			if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+				lightbox.classList.remove("is-open");
+				document.body.classList.remove("mermaid-lightbox-open");
+			}
+		});
+
+		document.body.appendChild(lightbox);
+		return lightbox;
+	}
+
+	function bindMermaidFullscreen() {
+		const lightbox = ensureMermaidLightbox();
+		const canvas = lightbox.querySelector(".mermaid-lightbox__canvas");
+
+		document.querySelectorAll(".post-content .mermaid").forEach(function (block) {
+			if (block.dataset.zoomBound === "1") return;
+			const svg = block.querySelector("svg");
+			if (!svg) return;
+
+			block.dataset.zoomBound = "1";
+			block.setAttribute("role", "button");
+			block.setAttribute("tabindex", "0");
+			block.setAttribute("aria-label", "Open diagram in fullscreen");
+
+			const open = function () {
+				const clone = svg.cloneNode(true);
+				clone.removeAttribute("width");
+				clone.removeAttribute("height");
+				clone.style.maxWidth = "none";
+				clone.style.width = "auto";
+				clone.style.height = "auto";
+				canvas.innerHTML = "";
+				canvas.appendChild(clone);
+				lightbox.classList.add("is-open");
+				document.body.classList.add("mermaid-lightbox-open");
+			};
+
+			block.addEventListener("click", open);
+			block.addEventListener("keydown", function (event) {
+				if (event.key === "Enter" || event.key === " ") {
+					event.preventDefault();
+					open();
+				}
+			});
+		});
+	}
+
 	document.addEventListener("DOMContentLoaded", function () {
 		if (window.mermaid) {
-			mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+			const isDark = document.documentElement.dataset.theme === "dark";
+			mermaid.initialize({
+				startOnLoad: true,
+				securityLevel: "loose",
+				flowchart: {
+					useMaxWidth: true,
+					htmlLabels: true,
+					padding: 12,
+					nodeSpacing: 30,
+					rankSpacing: 42
+				},
+				theme: "base",
+				themeVariables: {
+					fontFamily: "'Segoe UI', sans-serif",
+					fontSize: "12px",
+					primaryColor: isDark ? "#101318" : "#f8fafc",
+					primaryTextColor: isDark ? "#e5e7eb" : "#0f172a",
+					primaryBorderColor: isDark ? "#2b3340" : "#cbd5e1",
+					lineColor: isDark ? "#94a3b8" : "#475569",
+					secondaryColor: isDark ? "#151b24" : "#eef2f7",
+					tertiaryColor: isDark ? "#0b1017" : "#f1f5f9",
+					clusterBkg: isDark ? "#0f1622" : "#f8fafc",
+					clusterBorder: isDark ? "#2b3340" : "#cbd5e1",
+					defaultLinkColor: isDark ? "#94a3b8" : "#475569"
+				}
+			});
+
+			setTimeout(bindMermaidFullscreen, 250);
+			const observer = new MutationObserver(bindMermaidFullscreen);
+			observer.observe(document.body, { childList: true, subtree: true });
 		}
 	});
 </script>
