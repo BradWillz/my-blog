@@ -1,3 +1,14 @@
 {{- if .IsHome -}}
 <link rel="stylesheet" href="/css/home.css">
 {{- end -}}
+
+{{- if .Params.mermaid -}}
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		if (window.mermaid) {
+			mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+		}
+	});
+</script>
+{{- end -}}

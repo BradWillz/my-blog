@@ -14,6 +14,7 @@ categories:
   - Architecture
 showToc: true
 TocOpen: false
+mermaid: true
 ---
 
 Remember that parable about building your house on sand?
@@ -288,7 +289,7 @@ To make Azure predictable.
 
 Here is a simplified view of that idea:
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     A[Microsoft Entra Tenant] --> B[Management Groups]
 
@@ -303,7 +304,7 @@ flowchart TD
     D --> D1[Workload Subscription - App 1]
     D --> D2[Workload Subscription - App 2]
     D --> D3[Workload Subscription - App 3]
-```
+  {{< /mermaid >}}
 
 In plain English:
 
@@ -318,7 +319,6 @@ The **application landing zones** are where business workloads live.
 The platform gives teams the roads, rules, security, connectivity, and shared services.
 
 The application teams build on top of that foundation.
-```
 
 ---
 
